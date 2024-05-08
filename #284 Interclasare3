@@ -1,0 +1,66 @@
+#include <fstream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+using ui=unsigned int;
+
+ifstream cin("interclasare3.in");
+ofstream cout("interclasare3.out");
+
+int n,m;
+vector<int>a;
+vector<int>b;
+vector<int>v;
+int main()
+{
+    ui i,j;
+    cin>>n>>m;
+    for(ui i=0;i<n;i++)
+    {
+        ui x;
+        cin>>x;
+        if(x%2==0){
+        a.push_back(x);
+        }
+    }
+    for(ui i=0;i<m;i++)
+    {
+        ui x;
+        cin>>x;
+        if(x%2==0){
+        b.push_back(x);
+        }
+    }
+    for(i=0,j=0;i<a.size() and j<b.size();)
+    {
+                if(a[i]<b[j])
+                {
+                    v.push_back(a[i]);
+                    i++;
+                }
+                else
+                {
+                    v.push_back(b[j]);
+                    j++;
+                }
+    }
+    for(;i<a.size();i++)
+    {
+        v.push_back(a[i]);
+    }
+    for(;j<b.size();j++)
+    {
+        v.push_back(b[j]);
+    }
+    sort(v.begin(),v.end());
+    ui nr=0;
+    for(ui i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<" ";
+        nr++;
+        if(nr==20){cout<<"\n";nr=0;}
+
+    }
+    return 0;
+}
